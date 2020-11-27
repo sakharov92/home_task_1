@@ -1,0 +1,62 @@
+@font-face {
+	font-family: "icons";
+	src: url('./../fonts/icons.eot');
+	src: url('./../fonts/icons.eot?#iefix') format('eot'),
+		url('./../fonts/icons.woff2') format('woff2'),
+		url('./../fonts/icons.woff') format('woff'),
+		url('./../fonts/icons.ttf') format('truetype'),
+		url('./../fonts/icons.svg#icons') format('svg');
+}
+
+.icon:before {
+	font-family: "icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-arrow-left-solid:before {
+	content: "\E001";
+}
+
+.icon-arrow-right-solid:before {
+	content: "\E002";
+}
+
+.icon-body:before {
+	content: "\E003";
+}
+
+.icon-cap:before {
+	content: "\E004";
+}
+
+.icon-door:before {
+	content: "\E005";
+}
+
+.icon-men:before {
+	content: "\E006";
+}
+
+.icon-people:before {
+	content: "\E007";
+}
+
+.icon-pictures:before {
+	content: "\E008";
+}
+
+.icon-smiles:before {
+	content: "\E009";
+}
+
+.icon-star:before {
+	content: "\E00A";
+}

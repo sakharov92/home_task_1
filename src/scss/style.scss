@@ -1,0 +1,1122 @@
+// font-family mixin
+
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("./../fonts/#{$file_name}.woff") format("woff"),
+    url("./../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+// imports
+
+@import "icons.scss";
+@import "reset.scss";
+@import "slick.scss";
+@import "fonts.scss";
+@import "../../node_modules//animate.css//animate.css";
+
+
+// common constants
+$mainDesignColor: #ff699f;
+$titleFontSize: 36px;
+$textFOntSize: 16px;
+$smallLineHeight: 93.9%;
+$bigLineHeight: 153.4%;
+
+//common styles
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 72px;
+}
+
+//burger menu styles
+
+.sideMenu {
+  position: fixed;
+  left: -200vw;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  transition: left 0.5s;
+  z-index: 2;
+
+  &__decorationText {
+    color: #fef2f6;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 250px;
+    line-height: $smallLineHeight;
+    position: absolute;
+    z-index: -1;
+    transform: rotateZ(90deg);
+    right: -85vw;
+    top: 30vh;
+  }
+
+  &_active {
+    left: 0;
+  }
+
+  &__list {
+    margin-top: 40px;
+    margin-left: 24px;
+  }
+
+  &__item {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: $smallLineHeight;
+    margin-bottom: 40px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.5;
+    width: fit-content;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $mainDesignColor;
+    }
+  }
+
+  &__mainItem {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: $titleFontSize;
+    line-height: $smallLineHeight;
+    margin-bottom: 48px;
+  }
+
+  .startBtn {
+    border: 2px solid $mainDesignColor;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: fit-content;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    color: $mainDesignColor;
+    padding: 10px 40px;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+//header block
+
+header {
+  color: #000;
+}
+
+.burger-menu {
+  position: relative;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  margin-top: 22px;
+  z-index: 2;
+
+  &__line {
+    width: 100%;
+    height: 15%;
+    background-color: #000;
+    margin: 0 auto;
+    transition: transform 0.3s;
+  }
+
+  &_active {
+    position: fixed;
+    right: 16px;
+
+    .line1 {
+      position: relative;
+      top: 25%;
+      transform: rotate(45deg);
+    }
+
+    .line3 {
+      transform: rotate(-45deg);
+      position: relative;
+      bottom: 25%;
+    }
+
+    .line2 {
+      display: none;
+    }
+  }
+}
+
+.navigation {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 24px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid transparent;
+    box-sizing: border-box;
+    transition: border-color 0.5s;
+
+    &:hover {
+      border-color: #000;
+      cursor: pointer;
+    }
+  }
+
+  .startBtn {
+    margin-left: 35px;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    text-align: center;
+    padding: 4px 31px;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.navBar {
+  &__logo {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: $smallLineHeight;
+    margin-top: 28px;
+    margin-bottom: 27px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro {
+  display: flex;
+}
+
+.intro-block {
+  max-width: 40%;
+
+  &__title {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 72px;
+    line-height: 68px;
+    max-width: 30%;
+    margin-bottom: 16px;
+    margin-top: 73px;
+  }
+
+  &__subTitle {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 40px;
+  }
+
+  &__text {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    margin-bottom: 40px;
+    max-width: 383px;
+  }
+}
+
+.startButton {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: $textFOntSize;
+  line-height: $bigLineHeight;
+  border: 2px solid $mainDesignColor;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: $mainDesignColor;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 9px 38px 8px 38px;
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+figure {
+  width: auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+//services block
+
+.services {
+  &__title {
+    margin-top: 100px;
+    margin-bottom: 24px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: $titleFontSize;
+    line-height: $smallLineHeight;
+  }
+
+  &__text {
+    max-width: 700px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    margin-bottom: 48px;
+  }
+
+  &-samples {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  //// services slider block (mobile version)
+  .services-samples {
+    display: flex;
+
+    .slick-list {
+      width: 70%;
+      max-width: 421px;
+      margin: 0 auto;
+    }
+
+    .slick-track {
+      display: flex !important;
+    }
+
+    .slick-slide {
+      height: auto;
+    }
+
+    .service-item {
+      display: flex;
+
+      figure {
+        img {}
+      }
+
+      &__wrapper {
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-sizing: border-box;
+        box-shadow: 0px 4px 30px rgba(207, 207, 207, 0.25);
+        border-radius: 2px;
+        transition: box-shadow 0.5s;
+        max-width: 421px;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      &__title {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: $smallLineHeight;
+        margin-top: 40px;
+        margin-bottom: 24px;
+        margin-left: 24px;
+      }
+
+      &__list {}
+
+      &__listItem {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: normal;
+        font-size: $textFOntSize;
+        line-height: $bigLineHeight;
+        margin-bottom: 8px;
+        margin-left: 24px;
+
+        &:last-child {
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+
+  // services slider dots
+  .sliderControll {
+    display: flex;
+    max-width: 50%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+
+    .slick-dots {
+      display: flex;
+
+      .slick-active {
+        button {
+          background: $mainDesignColor;
+        }
+      }
+
+      li {
+        margin: 0 2px;
+
+        button {
+          width: 6px;
+          height: 6px;
+          background-color: transparent;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}
+
+////  "What we offer" block
+.offers {
+  &__title {
+    margin-top: 100px;
+    margin-bottom: 24px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: $titleFontSize;
+    line-height: $smallLineHeight;
+  }
+
+  &__text {
+    max-width: 700px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    margin-bottom: 48px;
+  }
+}
+
+.offers-set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__item {
+    min-width: 25%;
+    text-align: center;
+  }
+
+  &__icon {
+    font-family: "icons";
+    color: $mainDesignColor;
+    font-size: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    max-width: 50%;
+    margin: 15px auto 80px;
+  }
+}
+
+/// "Our coaches" block
+.coaches {
+  &__title {
+    margin-top: 100px;
+    margin-bottom: 24px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: $titleFontSize;
+    line-height: $smallLineHeight;
+  }
+
+  &__text {
+    max-width: 700px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    margin-bottom: 48px;
+  }
+
+  &-slider {
+    &__mobileButton {
+      width: 33px;
+      height: 33px;
+      border: 2px solid $mainDesignColor;
+      box-sizing: border-box;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      border-radius: 50%;
+      background-color: transparent;
+      color: $mainDesignColor;
+      font-weight: bold;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      display: none;
+    }
+
+    .slick-list {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .slick-slide {
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    &__itemWrapper {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-sizing: border-box;
+      box-shadow: 0px 4px 30px rgba(207, 207, 207, 0.25);
+      border-radius: 2px;
+      display: flex;
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: normal;
+      font-size: $textFOntSize;
+      line-height: $bigLineHeight;
+
+      width: calc(100% - 12px);
+
+      figure {
+        margin-right: 33px;
+      }
+    }
+
+    &__info {
+      position: relative;
+    }
+
+    &__number {
+      font-weight: bold;
+      line-height: $bigLineHeight;
+      margin-top: 43px;
+    }
+
+    &__coachName {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: $smallLineHeight;
+      margin-top: 8px;
+    }
+
+    &__workPosition {
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+    &__prop {
+      margin-top: 16px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    &__propValue {
+      color: #000;
+    }
+
+    &__button {
+      margin-top: 88px;
+    }
+  }
+
+  &-controlPanel {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: $textFOntSize;
+    line-height: $bigLineHeight;
+    display: flex;
+    margin: 25px auto 100px;
+    width: fit-content;
+
+    &__prev {
+      font-family: "icons";
+      margin: 0 10px;
+      font-size: 24px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__position {
+      margin: 0 10px;
+    }
+
+    &__current {}
+
+    &__clideAmount {}
+
+    &__next {
+      font-family: "icons";
+      margin: 0 10px;
+      font-size: 24px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .coachesSliderControll {
+    display: none;
+  }
+
+  .slick-disabled {
+    color: rgb(170, 170, 170);
+  }
+}
+
+//footer block
+footer {
+  color: #fff;
+  background-color: #000;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: $smallLineHeight;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+
+  .footerLogo {
+    margin: 35px 0;
+  }
+
+  .copyRight {
+    line-height: $bigLineHeight;
+    font-weight: normal;
+    margin: 35px 0 27px;
+  }
+}
+
+// @Media <=1024px
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+
+  .wrapper {
+    width: auto;
+  }
+
+  .intro-block {
+    max-width: 100%;
+  }
+
+  .services .services-samples {
+    padding-right: 16px;
+    justify-content: space-between;
+
+    .service-item {
+      width: 32%;
+    }
+
+    padding-left: 16px;
+
+    .slick-list {
+      width: 100%;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .service-item__wrapper {
+      max-width: calc(100%);
+    }
+  }
+
+  .coaches-controlPanel {
+    display: none;
+  }
+
+  .coaches .coachesSliderControll {
+    display: flex;
+    max-width: 50%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+
+    .slick-dots {
+      display: flex;
+      margin-bottom: 42px;
+
+      .slick-active {
+        button {
+          background: $mainDesignColor;
+        }
+      }
+
+      li {
+        margin: 0 2px;
+
+        button {
+          width: 6px;
+          height: 6px;
+          background-color: transparent;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  .navBar {
+    padding: 0 16px;
+  }
+
+  .coaches-slider__itemWrapper {
+    width: calc(100% - 12px);
+  }
+
+  .intro {
+    flex-direction: column-reverse;
+
+    figure {
+      max-width: 100%;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &-block {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        max-width: 80%;
+      }
+
+      &__text {
+        max-width: 90%;
+      }
+
+      &__button {
+        max-width: fit-content;
+      }
+    }
+  }
+
+  .offers__text,
+  .offers__title,
+  footer.container {
+    padding: 0 16px;
+  }
+
+  .offers-set {
+    justify-content: space-around;
+
+    &__item {
+      width: 30%;
+    }
+  }
+
+  .services {
+    &__title {
+      padding: 0 16px;
+    }
+
+    &__text {
+      padding: 0 16px;
+    }
+
+    &__text {
+      max-width: 90%;
+    }
+
+    .services-samples {
+      .service-item__listItem:last-child {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  .slick-dots {
+    margin-top: 12px;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      button {
+        color: transparent;
+        padding: 0px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  .coaches {
+    &__title {
+      padding: 0 16px;
+    }
+
+    &__text {
+      padding: 0 16px;
+    }
+
+    &-slider {
+      padding-left: 16px;
+    }
+  }
+
+  .slick-slide div {
+    height: 100%;
+  }
+}
+
+// @Media <=768px
+
+@media screen and (max-width: 768px) {
+  .services .services-samples {
+    padding-right: 0;
+
+    .service-item__wrapper {
+      max-width: calc(100% - 12px);
+    }
+  }
+
+  .sideMenu__decorationText {
+    font-size: 390px;
+    right: -60vw;
+    top: 30vh;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .navigation__list {
+    display: none;
+  }
+
+  .coaches-slider__itemWrapper {
+    width: calc(100% - 12px);
+  }
+
+  .coaches-slider .slick-slide {
+    padding: 0;
+  }
+
+  .coaches-slider {
+    padding-right: 0;
+  }
+}
+
+// @media <580px
+
+@media screen and (max-width: 580px) {
+  .coaches-slider {
+    &__itemWrapper {
+      flex-direction: column;
+      width: calc(100% - 12px);
+
+      .coaches-slider__photo {
+        margin: 0;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &__info {
+      padding: 0 16px;
+    }
+
+    &__number {
+      margin-top: 16px;
+    }
+
+    &__coachName {
+      margin-top: 9px;
+    }
+
+    &__workPosition {
+      margin: 4px 0 16px;
+    }
+
+    &__prop {
+      margin-top: 8px;
+    }
+
+    &__button {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// @media <460px
+
+@media screen and (max-width: 460px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+
+    .footerLogo {
+      margin: 20px 0;
+    }
+
+    .copyRight {
+      margin: 0 auto 20px;
+    }
+  }
+
+  .intro-block {
+    &__title {
+      margin-top: 32px;
+      font-size: $titleFontSize;
+      line-height: $smallLineHeight;
+      margin-bottom: 11px;
+    }
+
+    &__subTitle {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 18px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: $bigLineHeight;
+      margin-bottom: 24px;
+    }
+  }
+
+  .offers__title {
+    margin-top: 56px;
+  }
+
+  .offers-set__text {
+    font-size: 10px;
+    margin-bottom: 33px;
+  }
+
+  .offers-set__icon {
+    font-size: 70px;
+    height: 70px;
+  }
+
+  .offers-set {
+    justify-content: space-around;
+
+    &__item {
+      width: 50%;
+    }
+  }
+
+  .services {
+    &__title {
+      margin-top: 56px;
+      font-size: 24px;
+      line-height: $smallLineHeight;
+      margin-bottom: 12px;
+    }
+
+    &__text {
+      font-size: 13px;
+      line-height: $bigLineHeight;
+      margin-bottom: 32px;
+    }
+  }
+
+  .service-item__wrapper {
+    img {
+      width: 100%;
+    }
+  }
+
+  .sideMenu__decorationText {
+    font-size: 270px;
+    right: -88vw;
+    top: 32vh;
+  }
+
+  .sliderControll {
+    max-width: 55%;
+    font-size: 14px;
+  }
+
+  .slick-dots {
+    li {
+      button {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .coaches-slider {
+    &__itemWrapper {
+      padding-bottom: 32px;
+
+      .coaches-slider__button {
+        display: none;
+      }
+
+      .coaches-slider__mobileButton {
+        display: block;
+        bottom: -12px;
+      }
+
+      .coaches-slider__photo {
+        height: 300px;
+        width: auto;
+        margin: 0;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &__info {
+      padding: 0 16px;
+    }
+
+    &__number {
+      margin-top: 16px;
+    }
+
+    &__coachName {
+      margin-top: 9px;
+    }
+
+    &__workPosition {
+      margin: 4px 0 16px;
+    }
+
+    &__prop {
+      margin-top: 8px;
+    }
+
+    &__button {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// @media <375px
+@media screen and (max-width: 375px) {
+  .coaches-slider__propValue {
+    display: block;
+    line-height: 12px;
+  }
+
+  .sideMenu__decorationText {
+    font-size: 240px;
+  }
+}
+
+// @media <320px
+@media screen and (max-width: 320px) {
+  $textFOntSize: 18px;
+
+  .offers-set {
+    justify-content: space-around;
+
+    &__text {
+      margin-bottom: 24px;
+    }
+
+    &__item {
+      width: 100%;
+    }
+  }
+
+  .sideMenu__decorationText {
+    font-size: 210px;
+  }
+
+  .coaches-slider__itemWrapper {
+    padding-bottom: 37px;
+    width: calc(100% - 12px);
+
+    .coaches-slider__mobileButton {
+      display: block;
+      bottom: -19px;
+    }
+  }
+}
+
+///   animations
