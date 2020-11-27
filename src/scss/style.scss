@@ -24,8 +24,8 @@
 $mainDesignColor: #ff699f;
 $titleFontSize: 36px;
 $textFOntSize: 16px;
-$smallLineHeight: 93.9%;
-$bigLineHeight: 153.4%;
+$smallLineHeight: 0.9;
+$bigLineHeight: 1.5;
 
 //common styles
 
@@ -43,7 +43,7 @@ a {
 }
 
 .container {
-  padding: 0 72px;
+  padding: 0 20px;
 }
 
 //burger menu styles
@@ -222,6 +222,7 @@ header {
 }
 
 .navBar {
+
   &__logo {
     font-family: "Montserrat";
     font-style: normal;
@@ -241,7 +242,9 @@ header {
 }
 
 .intro-block {
-  max-width: 40%;
+  max-width: 35%;
+  padding-right: 20px;
+
 
   &__title {
     font-family: "Montserrat";
@@ -249,7 +252,6 @@ header {
     font-weight: bold;
     font-size: 72px;
     line-height: 68px;
-    max-width: 30%;
     margin-bottom: 16px;
     margin-top: 73px;
   }
@@ -270,7 +272,7 @@ header {
     font-size: $textFOntSize;
     line-height: $bigLineHeight;
     margin-bottom: 40px;
-    max-width: 383px;
+
   }
 }
 
@@ -342,7 +344,7 @@ figure {
     }
 
     .slick-track {
-      display: flex !important;
+      display: flex;
     }
 
     .slick-slide {
@@ -351,6 +353,8 @@ figure {
 
     .service-item {
       display: flex;
+      width: calc(33% - 10px);
+      // max-width: 421px;
 
       figure {
         img {}
@@ -362,7 +366,8 @@ figure {
         box-shadow: 0px 4px 30px rgba(207, 207, 207, 0.25);
         border-radius: 2px;
         transition: box-shadow 0.5s;
-        max-width: 421px;
+        width: 100%;
+
 
         &:hover {
           cursor: pointer;
@@ -461,7 +466,7 @@ figure {
   justify-content: space-between;
 
   &__item {
-    min-width: 25%;
+    width: 25%;
     text-align: center;
   }
 
@@ -481,7 +486,8 @@ figure {
     font-weight: normal;
     font-size: $textFOntSize;
     line-height: $bigLineHeight;
-    max-width: 50%;
+    max-width: 70%;
+    text-align: center;
     margin: 15px auto 80px;
   }
 }
@@ -664,6 +670,49 @@ footer {
 }
 
 // @Media <=1024px
+
+@media screen and (max-width: 1366px) {
+  .intro-block {
+    &__title {
+      font-size: 64px;
+      line-height: 70px;
+    }
+
+    &__subTitle {
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .intro-block {
+    &__title {
+      font-size: 54px;
+      line-height: 60px;
+      margin-top: 60px;
+    }
+
+    &__subTitle {
+      font-size: 18px;
+      line-height: 20px;
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+
+
+
 
 @media screen and (max-width: 1024px) {
   .container {
@@ -883,6 +932,12 @@ footer {
 // @media <580px
 
 @media screen and (max-width: 580px) {
+
+
+  .offers-set__item {
+    width: 50%;
+  }
+
   .coaches-slider {
     &__itemWrapper {
       flex-direction: column;
